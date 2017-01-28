@@ -6,6 +6,8 @@ require "action_mailer/railtie"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
+require 'flickraw'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -32,5 +34,8 @@ module CafecitoApi
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
+
+    FlickRaw.api_key = Rails.application.secrets.flickr_api_token
+    FlickRaw.shared_secret = Rails.application.secrets.flickr_secret_key
   end
 end
