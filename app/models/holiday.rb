@@ -38,4 +38,8 @@ class Holiday
   def holiday?
     @holidays.present?
   end
+
+  def holiday_list
+    HOLIDAYS
+  end
 end
