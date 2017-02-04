@@ -10,7 +10,14 @@ class CafecitoController < ApplicationController
     elsif params[:text].present?
       search = photos.select { |p| p['tags'].split(' ').include?(params[:text]) }
     else
-      search = photos.select { |p| !p['tags'].split(' ').include?(holiday.holiday_list.values) }
+      search = []
+      photos.each do |p|
+        include_photo = true
+        p['tags'].split(' ').each do |tag|
+          include_photo = false if holiday.holiday_list.values.include?(tag)
+        end
+        search << p if include_photo
+      end
     end
 
     photo = search.present? ? search.sample : photos.sample

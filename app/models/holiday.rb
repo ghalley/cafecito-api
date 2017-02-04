@@ -40,6 +40,6 @@ class Holiday
   end
 
   def holiday_list
-    HOLIDAYS
+    HOLIDAYS.compact
   end
 end
