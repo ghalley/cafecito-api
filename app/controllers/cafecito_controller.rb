@@ -23,6 +23,6 @@ class CafecitoController < ApplicationController
     photo = search.present? ? search.sample : photos.sample
 
     url = "https://farm#{photo['farm']}.staticflickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}.jpg"
-    render json: url.to_json
+    render json: {text: url}
   end
 end
