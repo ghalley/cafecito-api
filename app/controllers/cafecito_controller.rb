@@ -23,6 +23,6 @@ class CafecitoController < ApplicationController
     photo = search.present? ? search.sample : photos.sample
 
     url = "https://farm#{photo['farm']}.staticflickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}.jpg"
-    render json: {text: url, unfurl_media: true, attachments: [{image_url: url}], unfurl_links: true}
+    render json: {text: 'Cafecito Time!', unfurl_media: true, attachments: [{image_url: url}], unfurl_links: true}
   end
 end
