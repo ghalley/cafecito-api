@@ -36,7 +36,7 @@ class Holiday
   end
 
   def holiday?
-    @holidays.present?
+    @holidays.any? {|h| HOLIDAYS.keys.include?(h[:name])}
   end
 
   def holiday_list
