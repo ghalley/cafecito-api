@@ -1,7 +1,7 @@
 class CafecitoController < ApplicationController
   before_filter :authenticate
   def show
-    @photos = flickr.photosets.getPhotos(photoset_id: Rails.application.secrets.cafectio_photoset_id, extras: 'tags')['photo']
+    @photos = flickr.photosets.getPhotos(photoset_id: Rails.application.secrets.cafectio_photoset_id, extras: 'tags,original_format')['photo']
 
     holiday = Holiday.new
 
@@ -12,12 +12,15 @@ class CafecitoController < ApplicationController
     elsif check_weekday
     else
       remove_tags(holiday.holiday_list.values)
-      @photos = @photos.select { |p| p['tags'] == 'cafecito' }
+      @photos = @photos.select { |p| p['tags'].include?('cafecito') }
     end
 
     photo = @photos.sample
 
-    url = "https://farm#{photo['farm']}.staticflickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}.jpg"
+    secret = photo['originalformat'] == 'gif' ? photo['originalsecret'] + "_o" : photo['secret']
+    extension = photo['originalformat'] == 'gif' ? photo['originalformat'] : 'jpg'
+
+    url = "https://farm#{photo['farm']}.staticflickr.com/#{photo['server']}/#{photo['id']}_#{secret}.#{extension}"
     render json: {
       response_type: "in_channel",
       text: 'Cafecito Time!',
