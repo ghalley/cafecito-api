@@ -19,7 +19,7 @@ class Holiday
               "Thanksgiving" => "",
               "Nochebuena" => "christmas",
               "Christmas Day" => "christmas",
-              "New Year's Day" => ""}
+              "New Year's Day" => "newyear"}
 
   def initialize
     t = Date.today
