@@ -23,7 +23,7 @@ class CafecitoController < ApplicationController
     url = "https://farm#{photo['farm']}.staticflickr.com/#{photo['server']}/#{photo['id']}_#{secret}.#{extension}"
     render json: {
       response_type: "in_channel",
-      text: 'Cafecito Time!',
+      text: 'Cafecito Time! Come and get some Cuban espresso on the 24th floor.',
       unfurl_media: true,
       attachments: [{image_url: url}],
       unfurl_links: true,
