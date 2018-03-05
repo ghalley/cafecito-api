@@ -16,12 +16,13 @@ class Holiday
               "Labor Day" => "",
               "Thanksgiving" => "",
               "Halloween" => "halloween",
-              "Thanksgiving" => "",
               "Nochebuena" => "christmas",
               "Christmas Day" => "christmas",
-              "New Year's Day" => "newyear"}
+              "New Year's Day" => "newyear",
+              "305 Day" => '305day'}
 
   def initialize
+    Holidays.load_custom(Rails.root.to_s + "/config/custom_holidays.yml")
     t = Date.today
     date = Date.civil(t.year, t.month, t.day)
     @holidays = Holidays.on(date, :informal, :us)
