@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
-gem 'rails-api'
 
 
 group :development, :test do
@@ -22,6 +21,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'listen'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
