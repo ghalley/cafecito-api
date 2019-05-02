@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+gem 'rails', '>= 5.2.3'
 
 
 group :development, :test do
@@ -37,4 +37,4 @@ gem 'listen'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-ruby '2.3.1'
+ruby '2.3.8'
