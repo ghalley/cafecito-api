@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'rails-api'
 
 
